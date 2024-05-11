@@ -26,23 +26,20 @@ export const useUserStore = defineStore({
     },
     /** 登录 */
     login(userInfo: { username: string, password: string }) {
-      const token = '19bee7d7-ac62-4da6-9fb5-86f5b70bdc99'
-      setToken(token)
-      this.token = token
-      // return new Promise((resolve, reject) => {
-      //   accountLogin({
-      //     username: userInfo.username.trim(),
-      //     password: userInfo.password
-      //   })
-      //     .then((res: any) => {
-      //       setToken(res.data.accessToken)
-      //       this.token = res.data.accessToken
-      //       resolve(true)
-      //     })
-      //     .catch((error) => {
-      //       reject(error)
-      //     })
-      // })
+      return new Promise((resolve, reject) => {
+        accountLogin({
+          username: userInfo.username.trim(),
+          password: userInfo.password
+        })
+          .then((res: any) => {
+            setToken(res.data.accessToken)
+            this.token = res.data.accessToken
+            resolve(true)
+          })
+          .catch((error) => {
+            reject(error)
+          })
+      })
     },
     /** 获取用户详情 */
     getInfo() {

@@ -24,15 +24,15 @@ module.exports = {
     },
     // 反向代理
     proxy: {
-      // '/mock-api/': {
-      //   target: 'https://vue-typescript-admin-mock-server-armour.vercel.app/mock-api',
-      //   ws: true,
-      //   pathRewrite: {
-      //     '^/mock-api/': ''
-      //   },
-      //   changeOrigin: true,
-      //   secure: false
-      // }
+      '/a3': {
+        target: 'http://localhost:3000/a3',
+        ws: true,
+        pathRewrite: {
+          '^/a3/': ''
+        },
+        changeOrigin: true,
+        secure: false
+      }
     }
   },
   configureWebpack: () => {
